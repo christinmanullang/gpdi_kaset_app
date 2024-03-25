@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "9273698667",
+    "project_id": "gpdi-kaset-app",
+    "storage_bucket": "gpdi-kaset-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9273698667:android:5947459057dbc3edc2442e",
+        "android_client_info": {
+          "package_name": "com.example.gpdi_kaset_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARsCxzmUKKj_UDl5q-ZR75Vp8dem15oEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9273698667:android:477ddff47e78b8d3c2442e",
+        "android_client_info": {
+          "package_name": "com.example.test_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARsCxzmUKKj_UDl5q-ZR75Vp8dem15oEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9273698667:android:82cbde46d4fb1671c2442e",
+        "android_client_info": {
+          "package_name": "com.example.tugas_akhir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARsCxzmUKKj_UDl5q-ZR75Vp8dem15oEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
