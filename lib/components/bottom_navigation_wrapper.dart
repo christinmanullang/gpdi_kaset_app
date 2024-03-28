@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gpdi_kaset_app/admin/admin_page.dart';
+import 'package:gpdi_kaset_app/admin/admin_login_page.dart';
 import '../pages/home_page.dart';
 import '../pages/profile_page.dart';
 
@@ -22,13 +22,14 @@ class _BottomNavigationWrapperState extends State<BottomNavigationWrapper> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    AdminForm(),
+    AdminLoginPage(),
     const ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

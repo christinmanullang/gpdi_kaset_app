@@ -44,8 +44,9 @@ class _ProfilePageState extends State<ProfilePage> {
             child: const Text('Cancel'),
           ),
           TextButton(
-              onPressed: () => Navigator.of(context).pop(newValue),
-              child: const Text('Save'))
+            onPressed: () => Navigator.of(context).pop(newValue),
+            child: const Text('Save'),
+          ),
         ],
       ),
     );
@@ -61,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: const Text('Profile Page'),
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.transparent,
       ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
@@ -71,66 +72,87 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final userData = snapshot.data!.data() as Map<String, dynamic>;
-            final gender = userData['gender'];
+            final gender = userData['Jenis Kelamin'];
 
             String avatarUrl = '';
-            if (gender == 'male') {
-              avatarUrl = 'male';
-            } else if (gender == 'male') {
-              avatarUrl = 'female';
+            if (gender == 'Pria') {
+              avatarUrl = 'assets/images/man.png';
+            } else if (gender == 'Wanita') {
+              avatarUrl = 'assets/images/woman.png';
             } else {
               avatarUrl = 'default';
             }
 
             return ListView(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(avatarUrl),
-                    ),
-                    Text(userData['name']),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundImage: NetworkImage(avatarUrl),
+                      ),
+                      SizedBox(width: 16),
+                      Text(userData['Nama'].toString().toUpperCase()),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 25),
                 const Padding(
                   padding: EdgeInsets.only(left: 25),
                   child: Text(
-                    'My Details',
-                    style: TextStyle(color: Colors.amber),
+                    'Profil Saya',
+                    style: TextStyle(
+                      color: Color(0xFF1D4A86),
+                    ),
                   ),
                 ),
                 MyTextBox(
-                  text: userData['email'],
-                  sectionName: 'email',
-                  onPressed: () => editField('email'),
+                  text: userData['Email'],
+                  sectionName: 'Email',
+                  onPressed: () => editField('Email'),
                 ),
                 const SizedBox(height: 5),
                 MyTextBox(
-                  text: userData['name'],
-                  sectionName: 'name',
-                  onPressed: () => editField('name'),
+                  text: userData['Nama'],
+                  sectionName: 'Nama',
+                  onPressed: () => editField('Nama'),
                 ),
                 const SizedBox(height: 5),
                 MyTextBox(
-                  text: userData['address'],
-                  sectionName: 'alamat',
-                  onPressed: () => editField('address'),
+                  text: userData['Alamat'],
+                  sectionName: 'Alamat',
+                  onPressed: () => editField('Alamat'),
                 ),
                 const SizedBox(height: 5),
                 MyTextBox(
-                  text: userData['phone number'].toString(),
+                  text: userData['No HP'].toString(),
                   sectionName: 'No HP',
-                  onPressed: () => editField('phoneNumber'.toString()),
+                  onPressed: () => editField('No HP'.toString()),
                 ),
-                ElevatedButton(
-                  child: const Text('Keluar'),
-                  onPressed: () {
-                    FirebaseAuth.instance.signOut();
-                  },
+                const SizedBox(height: 5),
+                MyTextBox(
+                  text: userData['Tanggal Lahir'],
+                  sectionName: "Tanggal Lahir",
+                  onPressed: () => editField('Tanggal Lahir'),
+                ),
+                const SizedBox(height: 5),
+                MyTextBox(
+                  text: userData['Jenis Kelamin'],
+                  sectionName: "Jenis Kelamin",
+                  onPressed: () => editField('Jenis Kelamin'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 25.0, vertical: 10),
+                  child: ElevatedButton(
+                    child: const Text('Keluar'),
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                    },
+                  ),
                 ),
               ],
             );

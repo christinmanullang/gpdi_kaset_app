@@ -37,6 +37,7 @@ class _RenunganPageState extends State<RenunganPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MySliverAppBar(
@@ -57,15 +58,18 @@ class _RenunganPageState extends State<RenunganPage>
               },
             ),
             child: Padding(
-              padding: const EdgeInsets.only(top: 48.0, left: 24, right: 120),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _buildDropdownMonth(),
-                  _buildDropdownWeek(),
-                ],
+              padding: const EdgeInsets.only(top: 48.0, left: 24, right: 24),
+              child: SafeArea(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(child: _buildDropdownMonth()),
+                    const SizedBox(width: 16),
+                    Expanded(child: _buildDropdownWeek()),
+                  ],
+                ),
               ),
             ),
           )
@@ -95,17 +99,14 @@ class _RenunganPageState extends State<RenunganPage>
       'November',
       'Desember'
     ];
-    return SizedBox(
-      width: 150,
-      child: DropdownSearch<String>(
-        selectedItem: selectedMonth,
-        items: months,
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedMonth = newValue!;
-          });
-        },
-      ),
+    return DropdownSearch<String>(
+      selectedItem: selectedMonth,
+      items: months,
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedMonth = newValue!;
+        });
+      },
     );
   }
 
@@ -118,17 +119,14 @@ class _RenunganPageState extends State<RenunganPage>
       'Minggu 4',
       'Minggu 5'
     ];
-    return SizedBox(
-      width: 150,
-      child: DropdownSearch<String>(
-        selectedItem: selectedWeek,
-        items: weeks,
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedWeek = newValue!;
-          });
-        },
-      ),
+    return DropdownSearch<String>(
+      selectedItem: selectedWeek,
+      items: weeks,
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedWeek = newValue!;
+        });
+      },
     );
   }
 
@@ -149,7 +147,7 @@ class _RenunganPageState extends State<RenunganPage>
           return Center(child: Text('Error: ${snapshot.error}'));
         }
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return Center(child: Text('Data tidak tersedia!'));
+          return const Center(child: Text('Data tidak tersedia!'));
         }
         return ListView.builder(
           itemCount: snapshot.data!.docs.length,

@@ -33,69 +33,73 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // icon and greetings
-            const Icon(
-              Icons.home_outlined,
-              size: 60,
-              // color: ,
-            ),
-            const SizedBox(height: 25),
-            Text(
-              'Selamat datang di GPdI Kasih Setia Tembung!',
-              style: GoogleFonts.poppins(
-                color: Colors.grey[700],
-                fontSize: 16,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // icon and greetings
+              Image.asset(
+                'assets/images/gpdi-logo.png',
+                width: 120,
               ),
-            ),
-            const SizedBox(height: 25),
-
-            // Email field
-            MyTextField(
-              hintText: 'Email',
-              obscureText: false,
-              controller: _emailController,
-            ),
-            const SizedBox(height: 10),
-
-            // Password field
-            MyTextField(
-              hintText: 'Password',
-              obscureText: true,
-              controller: _pwController,
-            ),
-            const SizedBox(height: 25),
-
-            // BUTTON
-            MyButton(
-              onTap: () => login(context),
-              text: 'Login',
-            ),
-            const SizedBox(height: 25),
-
-            // ASKING TO REGISTER
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Not a member? ',
-                  style: TextStyle(color: Colors.grey[700]),
+              const SizedBox(height: 16),
+              Text(
+                'Selamat datang di \nGPdI Kasih Setia Tembung!',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  color: Colors.grey[700],
+                  fontSize: 16,
                 ),
-                GestureDetector(
-                  onTap: onTap,
-                  child: const Text(
-                    'Register Now',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1D4A86),
+              ),
+              const SizedBox(height: 16),
+
+              // Email field
+              MyTextField(
+                prefixIcon: const Icon(Icons.email),
+                hintText: 'Email',
+                obscureText: false,
+                controller: _emailController,
+              ),
+              const SizedBox(height: 10),
+
+              // Password field
+              MyTextField(
+                prefixIcon: const Icon(Icons.lock),
+                hintText: 'Password',
+                obscureText: true,
+                controller: _pwController,
+              ),
+              const SizedBox(height: 16),
+
+              // BUTTON
+              MyButton(
+                onTap: () => login(context),
+                text: 'Login',
+              ),
+              const SizedBox(height: 16),
+
+              // ASKING TO REGISTER
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Belum punya akun? ',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  GestureDetector(
+                    onTap: onTap,
+                    child: const Text(
+                      'Registrasi disini',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1D4A86),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

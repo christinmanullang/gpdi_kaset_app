@@ -4,29 +4,53 @@ import '../auth/auth_service.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  final void Function()? onTap;
+  const RegisterPage({super.key, required this.onTap});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _nameController = TextEditingController();
   final _addressController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _pwController = TextEditingController();
   final _confirmPwController = TextEditingController();
-  final void Function()? onTap;
-  RegisterPage({super.key, required this.onTap});
+  final _dateController = TextEditingController();
+  String? _gender;
+
+  // FUNGSI TANGGAL LAHIR
+  void _selectDate() async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1900),
+        lastDate: DateTime.now());
+    if (picked != null) {
+      setState(() {
+        _dateController.text = picked.toString().split(' ')[0];
+      });
+    }
+  }
 
   void register(BuildContext context) {
-    addUserData(
-      _emailController.text.trim(),
-      _nameController.text.trim(),
-      _addressController.text.trim(),
-      int.parse(_phoneNumberController.text.trim()),
-    );
     final auth = AuthService();
     if (_pwController.text == _confirmPwController.text) {
       try {
         auth.signUpWithEmailPassword(
           _emailController.text,
           _confirmPwController.text,
+        );
+        addUserData(
+          _emailController.text.trim(),
+          _nameController.text.trim(),
+          _addressController.text.trim(),
+          int.parse(_phoneNumberController.text.trim()),
+          _dateController.text.trim(),
+          _gender!,
         );
       } catch (e) {
         showDialog(
@@ -46,97 +70,172 @@ class RegisterPage extends StatelessWidget {
     }
   }
 
-  Future addUserData(
-      String email, String name, String address, int phoneNumber) async {
+  Future addUserData(String email, String nama, String alamat, int noHP,
+      String tanggal, String gender) async {
     await FirebaseFirestore.instance.collection('users').doc(email).set({
-      'email': email,
-      'name': name,
-      'address': address,
-      'phone number': phoneNumber,
+      'Email': email,
+      'Nama': nama,
+      'Alamat': alamat,
+      'No HP': noHP,
+      'Tanggal Lahir': tanggal,
+      'Jenis Kelamin': gender,
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: const Text("Buat Akun"),
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 25),
-            // FIELDS
-            MyTextField(
-              hintText: 'Email',
-              obscureText: false,
-              controller: _emailController,
-            ),
-            const SizedBox(height: 5),
-            MyTextField(
-              hintText: 'Nama Lengkap',
-              obscureText: false,
-              controller: _nameController,
-            ),
-            const SizedBox(height: 5),
-            MyTextField(
-                hintText: 'Alamat',
-                obscureText: false,
-                controller: _addressController),
-            const SizedBox(height: 5),
-            MyTextField(
-                hintText: 'No Handphone',
-                obscureText: false,
-                controller: _phoneNumberController),
-            const SizedBox(height: 5),
-            MyTextField(
-              hintText: 'Password',
-              obscureText: true,
-              controller: _pwController,
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            MyTextField(
-              hintText: 'Confirm password',
-              obscureText: true,
-              controller: _confirmPwController,
-            ),
-            const SizedBox(height: 25),
-
-            // BUTTON
-            MyButton(
-              onTap: () => register(context),
-              text: 'Sign Up',
-            ),
-            const SizedBox(height: 25),
-
-            // ASKING TO LOGIN
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account? ',
-                  style: TextStyle(color: Colors.grey[700]),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // FIELDS
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  contentPadding: EdgeInsets.all(12),
                 ),
-                GestureDetector(
-                  onTap: onTap,
-                  child: const Text(
-                    'Login Now',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1D4A86),
+                obscureText: false,
+                controller: _emailController,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Nama Lengkap',
+                  contentPadding: EdgeInsets.all(12),
+                ),
+                obscureText: false,
+                controller: _nameController,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Alamat',
+                  contentPadding: EdgeInsets.all(12),
+                ),
+                obscureText: false,
+                controller: _addressController,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'No Handphone',
+                  contentPadding: EdgeInsets.all(12),
+                ),
+                obscureText: false,
+                controller: _phoneNumberController,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Tanggal Lahir',
+                  contentPadding: EdgeInsets.all(12),
+                ),
+                obscureText: false,
+                controller: _dateController,
+                onTap: _selectDate,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 16.0, top: 8.0),
+                    child: Text('Pilih jenis kelamin'),
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: const Text('Pria'),
+                          leading: Radio<String>(
+                            value: 'Pria',
+                            groupValue: _gender,
+                            onChanged: (value) {
+                              setState(() {
+                                _gender = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListTile(
+                          title: const Text('Wanita'),
+                          leading: Radio<String>(
+                            value: 'Wanita',
+                            groupValue: _gender,
+                            onChanged: (value) {
+                              setState(() {
+                                _gender = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  contentPadding: EdgeInsets.all(12),
+                ),
+                obscureText: true,
+                controller: _pwController,
+              ),
+              const SizedBox(height: 8),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Konfirmasi password',
+                  contentPadding: EdgeInsets.all(12),
+                ),
+                obscureText: true,
+                controller: _confirmPwController,
+              ),
+              const SizedBox(height: 8),
+
+              const SizedBox(height: 25),
+
+              // BUTTON
+              MyButton(
+                onTap: () => register(context),
+                text: 'Sign Up',
+              ),
+              const SizedBox(height: 25),
+
+              // ASKING TO LOGIN
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Sudah punya akun? ',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: const Text(
+                      'Login disini',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1D4A86),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 50)
-          ],
+                ],
+              ),
+              const SizedBox(height: 8)
+            ],
+          ),
         ),
       ),
     );

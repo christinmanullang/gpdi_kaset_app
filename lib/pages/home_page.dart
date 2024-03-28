@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,13 +36,13 @@ List<Feature> features = [
   Feature(
     title: 'Galeri',
     description: 'Lihat galeri foto',
-    imagePath: "assets/images/newspaper.png",
+    imagePath: "assets/images/gallery.png",
     content: const Scaffold(),
   ),
   Feature(
-    title: 'About',
+    title: 'Tentang Kami',
     description: 'Tentang aplikasi',
-    imagePath: "assets/images/bible.png",
+    imagePath: "assets/images/church.png",
     content: const Scaffold(),
   ),
 ];
@@ -63,10 +64,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
-          title: const Text('GPdI Kasih Setia'),
-          centerTitle: true,
-        ),
+            backgroundColor: Colors.transparent,
+            title: const Text('GPdI Kasih Setia'),
+            centerTitle: true,
+            leading: Image.asset(
+              'assets/images/gpdi-logo.png',
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                icon: const Icon(Icons.logout),
+              ),
+            ]),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -76,7 +89,7 @@ class HomePage extends StatelessWidget {
                 'Selamat datang di \nAplikasi GPdI Kasih Setia',
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey[800],
+                    // color: Colors.white,
                     fontSize: 18),
               ),
             ),
@@ -93,16 +106,21 @@ class HomePage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Card(
-                        margin: const EdgeInsets.only(left: 25, right: 25),
+                        color: Color(0xFFB0BEC5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(features[index].imagePath, height: 80),
+                            AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: Image.asset(
+                                features[index].imagePath,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
                             Text(
                               features[index].title,
-                              style: const TextStyle(fontSize: 20),
+                              style: GoogleFonts.nunito(fontSize: 16),
                             ),
-                            // Text(features[index].description)
                           ],
                         ),
                       ),
@@ -111,6 +129,7 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(width: 16),
           ],
         ),
       ),
