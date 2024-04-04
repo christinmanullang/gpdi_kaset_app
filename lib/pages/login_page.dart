@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../auth/auth_service.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
@@ -46,7 +46,7 @@ class LoginPage extends StatelessWidget {
               Text(
                 'Selamat datang di \nGPdI Kasih Setia Tembung!',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
+                style: TextStyle(
                   color: Colors.grey[700],
                   fontSize: 16,
                 ),

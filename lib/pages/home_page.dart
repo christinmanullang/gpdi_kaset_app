@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import 'jadwal_ibadah_page.dart';
 import 'renungan_page.dart';
 
-// Buat model data untuk mewakili setiap fitur
 class Feature {
   final String title;
   final String description;
@@ -19,7 +18,6 @@ class Feature {
   });
 }
 
-// Buat daftar dari model data fitur
 List<Feature> features = [
   Feature(
     title: 'Renungan',
@@ -31,7 +29,7 @@ List<Feature> features = [
     title: 'Jadwal Ibadah',
     description: 'Lihat jadwal ibadah',
     imagePath: "assets/images/schedule.png",
-    content: const Scaffold(),
+    content: const JadwalIbadahPage(),
   ),
   Feature(
     title: 'Galeri',
@@ -62,76 +60,84 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.grey[300],
-        appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            title: const Text('GPdI Kasih Setia'),
-            centerTitle: true,
-            leading: Image.asset(
-              'assets/images/gpdi-logo.png',
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Text('GPdI Kasih Setia'),
+          centerTitle: true,
+          leading: Image.asset(
+            'assets/images/gpdi-logo.png',
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              icon: const Icon(Icons.logout),
             ),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                icon: const Icon(Icons.logout),
+          ]),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: double.infinity,
+            height: 200,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/ibadah.jpg'),
+                fit: BoxFit.cover,
               ),
-            ]),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+            ),
+            child: const Center(
               child: Text(
                 'Selamat datang di \nAplikasi GPdI Kasih Setia',
-                style: GoogleFonts.poppins(
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    // color: Colors.white,
                     fontSize: 18),
               ),
             ),
-            Expanded(
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemCount: features.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () =>
-                        navigateToFeatureDetails(context, features[index]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Card(
-                        color: Color(0xFFB0BEC5),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Image.asset(
-                                features[index].imagePath,
-                                fit: BoxFit.fitHeight,
-                              ),
+          ),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemCount: features.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () =>
+                      navigateToFeatureDetails(context, features[index]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      color: const Color(0xFFB0BEC5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: Image.asset(
+                              features[index].imagePath,
+                              fit: BoxFit.fitHeight,
                             ),
-                            Text(
-                              features[index].title,
-                              style: GoogleFonts.nunito(fontSize: 16),
-                            ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            features[index].title,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ],
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-            const SizedBox(width: 16),
-          ],
-        ),
+          ),
+          const SizedBox(width: 16),
+        ],
       ),
     );
   }

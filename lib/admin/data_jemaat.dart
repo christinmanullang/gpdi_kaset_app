@@ -33,17 +33,17 @@ class DataJemaat extends StatelessWidget {
               DataColumn(label: Text('Email')),
               DataColumn(label: Text('Nomor HP')),
               DataColumn(label: Text('Alamat')),
-              // DataColumn(label: Text('Jenis Kelamin')),
+              DataColumn(label: Text('Jenis Kelamin')),
             ],
             rows: jemaatList.map((jemaat) {
               final Map<String, dynamic> data =
                   jemaat.data() as Map<String, dynamic>;
               return DataRow(cells: [
-                DataCell(Text(data['name'] ?? '')),
-                DataCell(Text(data['email'] ?? '')),
-                DataCell(Text(data['phone number'].toString())),
-                DataCell(Text(data['address'])),
-                // DataCell(Text(data['gender'])),
+                DataCell(Text(data['Nama'] ?? '')),
+                DataCell(Text(data['Email'] ?? '')),
+                DataCell(Text(data['No HP'].toString())),
+                DataCell(Text(data['Alamat'])),
+                DataCell(Text(data['Jenis Kelamin'])),
               ]);
             }).toList(),
           );

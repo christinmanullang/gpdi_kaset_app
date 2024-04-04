@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class MyTextBox extends StatelessWidget {
   final String text;
   final String sectionName;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   const MyTextBox({
     super.key,
     required this.text,
     required this.sectionName,
-    required this.onPressed,
+    this.onPressed,
   });
 
   @override

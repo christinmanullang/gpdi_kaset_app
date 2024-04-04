@@ -92,10 +92,13 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       CircleAvatar(
                         radius: 50,
-                        backgroundImage: NetworkImage(avatarUrl),
+                        backgroundImage: AssetImage(avatarUrl),
                       ),
-                      SizedBox(width: 16),
-                      Text(userData['Nama'].toString().toUpperCase()),
+                      const SizedBox(width: 16),
+                      Text(
+                        userData['Nama'].toString().toUpperCase(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ],
                   ),
                 ),
@@ -112,7 +115,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 MyTextBox(
                   text: userData['Email'],
                   sectionName: 'Email',
-                  onPressed: () => editField('Email'),
                 ),
                 const SizedBox(height: 5),
                 MyTextBox(

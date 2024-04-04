@@ -23,8 +23,8 @@ class _RenunganPageState extends State<RenunganPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 6, vsync: this);
-    selectedMonth = "Maret";
-    selectedWeek = "Minggu 4";
+    selectedMonth = "April";
+    selectedWeek = "Minggu 1";
     selectedDayIndex = 0;
   }
 

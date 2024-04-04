@@ -23,13 +23,6 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: const Text('Jemaat Page'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/data_jemaat');
-            },
-          ),
-          ListTile(
             title: const Text('Tambah Renungan'),
             onTap: () {
               Navigator.pop(context);
@@ -37,17 +30,17 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Jadwal Ibadah'),
+            title: const Text('Tambah Jadwal Ibadah'),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushNamed(context, '/jadwal_ibadah');
             },
           ),
           ListTile(
-            title: const Text('Tambah Renungan'),
+            title: const Text('Jemaat Page'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/adminhomepage');
+              Navigator.pushNamed(context, '/data_jemaat');
             },
           ),
           ListTile(
