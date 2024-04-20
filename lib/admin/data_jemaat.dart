@@ -9,6 +9,7 @@ class DataJemaat extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text('Data Jemaat'),
       ),
       body: StreamBuilder<QuerySnapshot>(
@@ -24,7 +25,6 @@ class DataJemaat extends StatelessWidget {
             return const Center(child: Text('No data available.'));
           }
 
-          // Memperoleh daftar jemaat dari snapshot
           final List<DocumentSnapshot> jemaatList = snapshot.data!.docs;
 
           return DataTable(

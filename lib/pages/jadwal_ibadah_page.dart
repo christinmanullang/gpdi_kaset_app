@@ -30,7 +30,7 @@ class _JadwalIbadahPageState extends State<JadwalIbadahPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Jadwal Ibadah Minggu Ini')),
+      backgroundColor: Colors.grey[300],
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('jadwal_ibadah')
@@ -76,7 +76,7 @@ class _JadwalIbadahPageState extends State<JadwalIbadahPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text('Hari $hari'),
-                        Text('$tanggal'),
+                        Text(tanggal),
                         const Divider(),
                         Text('Ibadah $namaIbadah'.toUpperCase()),
                         Text('Jam $jam WIB - selesai'),
@@ -84,13 +84,13 @@ class _JadwalIbadahPageState extends State<JadwalIbadahPage> {
                         Text(
                           'Di  ${tempat.replaceAll('\\n', '\n')}',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 8),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

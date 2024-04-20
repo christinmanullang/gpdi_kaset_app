@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gpdi_kaset_app/components/my_button.dart';
 import '../components/my_textfield.dart';
 
 class AdminLoginPage extends StatelessWidget {
@@ -16,6 +17,17 @@ class AdminLoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Icon(Icons.sensor_occupied, size: 120),
+            const SizedBox(height: 16),
+            Text(
+              'MASUK SEBAGAI ADMIN',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.grey[700],
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(height: 16),
             MyTextField(
               controller: emailController,
               labelText: 'Email',
@@ -30,8 +42,9 @@ class AdminLoginPage extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
+            MyButton(
+              text: 'Login Admin',
+              onTap: () {
                 String email = emailController.text;
                 String password = passwordController.text;
                 if (email == 'admin@gmail.com' && password == 'admin123') {
@@ -42,14 +55,6 @@ class AdminLoginPage extends StatelessWidget {
                   );
                 }
               },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 25),
-                backgroundColor: const Color(0xFF1D4A86),
-              ),
-              child: const Text(
-                'Login Admin',
-                style: TextStyle(color: Colors.white),
-              ),
             ),
           ],
         ),

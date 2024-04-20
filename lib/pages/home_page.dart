@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'jadwal_ibadah_page.dart';
+import 'about_page.dart';
+import 'warta_page.dart';
 import 'renungan_page.dart';
 
 class Feature {
@@ -21,27 +22,28 @@ class Feature {
 List<Feature> features = [
   Feature(
     title: 'Renungan',
-    description: 'Baca renungan harian',
+    description: ' ',
     imagePath: "assets/images/bible.png",
     content: const RenunganPage(),
   ),
   Feature(
-    title: 'Jadwal Ibadah',
-    description: 'Lihat jadwal ibadah',
+    title: 'Warta Jemaat',
+    description:
+        'Lihat jadwal ibadah sepekan, dan pelayan yang bertugas melayani',
     imagePath: "assets/images/schedule.png",
-    content: const JadwalIbadahPage(),
+    content: const WartaJemaatPage(),
   ),
   Feature(
     title: 'Galeri',
-    description: 'Lihat galeri foto',
+    description: ' ',
     imagePath: "assets/images/gallery.png",
     content: const Scaffold(),
   ),
   Feature(
-    title: 'Tentang Kami',
-    description: 'Tentang aplikasi',
+    title: 'Profil Gereja',
+    description: ' ',
     imagePath: "assets/images/church.png",
-    content: const Scaffold(),
+    content: const AboutPage(),
   ),
 ];
 
@@ -127,6 +129,12 @@ class HomePage extends StatelessWidget {
                           Text(
                             features[index].title,
                             style: const TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            features[index].description,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 13, color: Colors.blueGrey),
                           ),
                         ],
                       ),

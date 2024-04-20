@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/my_sliver_app_bar.dart';
@@ -23,15 +24,20 @@ class _RenunganPageState extends State<RenunganPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 6, vsync: this);
-    selectedMonth = "April";
-    selectedWeek = "Minggu 1";
-    selectedDayIndex = 0;
+    _setSelectedDate();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  void _setSelectedDate() {
+    DateTime now = DateTime.now();
+    selectedMonth = DateFormat('MMMM').format(now);
+    selectedWeek = 'Minggu ${((now.day - 1) ~/ 7) + 1}';
+    selectedDayIndex = now.weekday - 1;
   }
 
   @override

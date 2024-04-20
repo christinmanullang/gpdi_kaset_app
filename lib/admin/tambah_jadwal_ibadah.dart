@@ -24,10 +24,11 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != selectedDate)
+    if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
       });
+    }
   }
 
   Future<void> _selectTime(BuildContext context) async {
@@ -35,10 +36,11 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
       context: context,
       initialTime: selectedTime,
     );
-    if (picked != null && picked != selectedTime)
+    if (picked != null && picked != selectedTime) {
       setState(() {
         selectedTime = picked;
       });
+    }
   }
 
   void _submitSchedule() {
@@ -62,40 +64,36 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
       'tanggal': selectedDateTime,
       'tempat': tempat,
     }).then((value) {
-      // Success, do something
-      // For example, show a success dialog or navigate to another page
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Success'),
-            content: Text('Jadwal ibadah berhasil ditambahkan!'),
+            title: const Text('Success'),
+            content: const Text('Jadwal ibadah berhasil ditambahkan!'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                  // Optionally navigate to another page
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
         },
       );
     }).catchError((error) {
-      // Handle error
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Error'),
+            title: const Text('Error'),
             content: Text('Terjadi kesalahan: $error'),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -107,34 +105,36 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Tambah Jadwal Ibadah'),
+        title: const Text('Tambah Jadwal Ibadah'),
+        backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: ibadahController,
-              decoration: InputDecoration(labelText: 'Nama Ibadah'),
+              decoration: const InputDecoration(labelText: 'Nama Ibadah'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: tempatController,
-              decoration: InputDecoration(labelText: 'Tempat'),
+              decoration: const InputDecoration(labelText: 'Tempat'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: leaderController,
-              decoration: InputDecoration(labelText: 'P. Pujian'),
+              decoration: const InputDecoration(labelText: 'P. Pujian'),
             ),
             TextField(
               controller: preacherController,
-              decoration: InputDecoration(labelText: 'F. Tuhan'),
+              decoration: const InputDecoration(labelText: 'F. Tuhan'),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             GestureDetector(
               onTap: () => _selectDate(context),
               child: AbsorbPointer(
@@ -142,11 +142,11 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
                   controller: TextEditingController(
                       text:
                           '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}'),
-                  decoration: InputDecoration(labelText: 'Tanggal'),
+                  decoration: const InputDecoration(labelText: 'Tanggal'),
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             GestureDetector(
               onTap: () => _selectTime(context),
               child: AbsorbPointer(
@@ -154,14 +154,14 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
                   controller: TextEditingController(
                       text:
                           '${selectedTime.hour}:${selectedTime.minute} ${selectedTime.period == DayPeriod.am ? 'AM' : 'PM'}'),
-                  decoration: InputDecoration(labelText: 'Jam'),
+                  decoration: const InputDecoration(labelText: 'Jam'),
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: _submitSchedule,
-              child: Text('Tambah Jadwal'),
+              child: const Text('Tambah Jadwal'),
             ),
           ],
         ),

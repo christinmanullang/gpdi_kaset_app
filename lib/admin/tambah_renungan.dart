@@ -1,9 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gpdi_kaset_app/admin/my_drawer.dart';
-
-import '../pages/home_page.dart';
 
 class TambahRenungan extends StatefulWidget {
   const TambahRenungan({super.key});
@@ -49,16 +46,42 @@ class _TambahRenunganState extends State<TambahRenungan> {
     'Sabtu'
   ];
 
-  String selectedMonth = 'Maret';
-  String selectedWeek = 'Minggu 4';
-  int selectedDayIndex = 0;
+  late String selectedMonth;
+  late String selectedWeek;
+  late int selectedDayIndex;
+
+  void _submitRenungan() {
+    FirebaseFirestore.instance.collection('renungan_harian').add({
+      'tanggal': tanggalController.text,
+      'judul': judulController.text,
+      'ayatAlkitab': ayatController.text,
+      'renungan': renunganController.text,
+      'hari': selectedDayIndex,
+      'minggu': selectedWeek,
+      'bulan': selectedMonth,
+    }).then((value) {
+      tanggalController.clear();
+      judulController.clear();
+      ayatController.clear();
+      renunganController.clear();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Renungan berhasil ditambahkan')),
+      );
+    }).catchError((error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $error')),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Admin Home'),
+        backgroundColor: Colors.transparent,
+        title: const Text('Tambah Renungan'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -99,43 +122,8 @@ class _TambahRenunganState extends State<TambahRenungan> {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {
-                  // Tambah data renungan ke Firestore
-                  FirebaseFirestore.instance.collection('renungan_harian').add({
-                    'tanggal': tanggalController.text,
-                    'judul': judulController.text,
-                    'ayatAlkitab': ayatController.text,
-                    'renungan': renunganController.text,
-                    'hari': selectedDayIndex,
-                    'minggu': selectedWeek,
-                    'bulan': selectedMonth,
-                  }).then((value) {
-                    // Reset field setelah berhasil menambah data
-                    tanggalController.clear();
-                    judulController.clear();
-                    ayatController.clear();
-                    renunganController.clear();
-
-                    // Tampilkan pesan sukses
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          content: Text('Renungan berhasil ditambahkan')),
-                    );
-                  }).catchError((error) {
-                    // Tampilkan pesan kesalahan jika terjadi error
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Error: $error')),
-                    );
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 25),
-                  backgroundColor: const Color(0xFF1D4A86),
-                ),
-                child: const Text(
-                  'Tambah Renungan',
-                  style: TextStyle(color: Colors.white),
-                ),
+                onPressed: _submitRenungan,
+                child: const Text('Tambah Renungan'),
               ),
             ],
           ),
@@ -172,7 +160,6 @@ class _TambahRenunganState extends State<TambahRenungan> {
       },
       dropdownDecoratorProps: const DropDownDecoratorProps(
         dropdownSearchDecoration: InputDecoration(
-          // labelText: "Menu mode",
           hintText: "Pilih Minggu...",
         ),
       ),

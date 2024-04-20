@@ -12,6 +12,7 @@ class MySliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      backgroundColor: Colors.grey[300],
       collapsedHeight: 150,
       pinned: true,
       title: const Text('Renungan'),
