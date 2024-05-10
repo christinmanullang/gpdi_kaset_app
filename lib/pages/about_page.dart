@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -19,51 +19,39 @@ class _AboutPageState extends State<AboutPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25.0),
-                image: const DecorationImage(
-                  image: AssetImage('assets/images/ibadah.jpg'),
-                  fit: BoxFit.cover,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 250,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage('assets/images/ibadah.jpg'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () {
-                    html.window.open(
-                        'https://maps.app.goo.gl/VRBqUu3egU3nNcRM8', 'maps');
-                  },
-                  child: const Column(children: [
-                    Icon(Icons.location_on),
-                    Text('GPdI Kasih Setia')
-                  ]),
-                ),
-                InkWell(
-                  onTap: () {
-                    html.window.open('https://wa.me/6285158321104', 'google');
-                  },
-                  child: const Column(children: [
-                    Icon(Icons.chat),
-                    Text('+62 851-5832-1104'),
-                  ]),
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: const Column(children: [
-                    Icon(Icons.mail),
-                    Text('caprilliam11@gmail.com')
-                  ]),
-                ),
-              ],
-            ),
-          ],
+              const SizedBox(height: 10),
+              Text('Tentang Kami',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('GPdI Kasih Setia',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla hendrerit erat sed urna dapibus, at finibus risus fringilla. Aliquam scelerisque sem purus, in placerat arcu vehicula at. Donec risus felis, auctor eget nulla at, suscipit porttitor risus. Pellentesque volutpat, nibh eget porttitor malesuada, felis velit viverra urna, sed placerat nisi est vel ligula. Nunc non sem vel arcu luctus lacinia. Pellentesque fringilla ultrices metus, quis commodo libero sollicitudin viverra.'),
+              SizedBox(height: 10),
+              Text('Kontak dan Lokasi',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(
+                  'HQX5+QHG, Gg. Bromo, Hutan, Kec. Percut Sei Tuan, Kabupaten Deli Serdang, Sumatera Utara 20371'),
+              Text('0851 5832 1104'),
+              Text('caprilliam11@gmail.com'),
+              SizedBox(height: 10),
+              Text('Jam Buka',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text('Selasa - Minggu'),
+              Text('08.00 - 17.00 WIB'),
+            ],
+          ),
         ),
       ),
     );

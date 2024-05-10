@@ -33,10 +33,7 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,19 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAF1u0Mp9AJZPP1GQJNfIv0Kw99W7-ssUM',
+    appId: '1:449687596316:web:439e55159dd4b2b6cd5ed9',
+    messagingSenderId: '449687596316',
+    projectId: 'db-gpdi-kaset-app',
+    authDomain: 'db-gpdi-kaset-app.firebaseapp.com',
+    storageBucket: 'db-gpdi-kaset-app.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCEQAHZosudHd_J94E6OtndceHQGFqo_qs',
+    appId: '1:449687596316:android:8d1680ae54159704cd5ed9',
+    messagingSenderId: '449687596316',
+    projectId: 'db-gpdi-kaset-app',
+    storageBucket: 'db-gpdi-kaset-app.appspot.com',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyCf622tMEP6smM5Y8qYIs_h6oC5DTL9fME',
-    appId: '1:751540178046:web:ad4461b610c9f9f6c5dc2f',
+    appId: '1:751540178046:web:b239becefd1fe85ec5dc2f',
     messagingSenderId: '751540178046',
     projectId: 'gpdi-kaset-flutter-app',
     authDomain: 'gpdi-kaset-flutter-app.firebaseapp.com',
     storageBucket: 'gpdi-kaset-flutter-app.appspot.com',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDQ68NqR79cDHBzJGe34G9LflRUwueY87I',
-    appId: '1:751540178046:android:146c2b82602f938ec5dc2f',
-    messagingSenderId: '751540178046',
-    projectId: 'gpdi-kaset-flutter-app',
-    storageBucket: 'gpdi-kaset-flutter-app.appspot.com',
-  );
 }
