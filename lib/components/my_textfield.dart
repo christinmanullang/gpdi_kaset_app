@@ -6,6 +6,7 @@ class MyTextField extends StatelessWidget {
   final String? hintText;
   final String? labelText;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final void Function()? onTap;
   final EdgeInsets? contentPadding;
   final TextEditingController controller;
@@ -16,6 +17,7 @@ class MyTextField extends StatelessWidget {
       this.hintText,
       this.labelText,
       this.prefixIcon,
+      this.suffixIcon,
       this.contentPadding,
       this.onTap,
       required this.controller});
@@ -33,6 +35,7 @@ class MyTextField extends StatelessWidget {
           contentPadding: contentPadding,
           labelText: labelText,
           prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
           enabledBorder: const OutlineInputBorder(),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(

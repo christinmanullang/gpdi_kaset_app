@@ -97,7 +97,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       const SizedBox(width: 16),
                       Text(
                         userData['Nama'].toString().toUpperCase(),
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

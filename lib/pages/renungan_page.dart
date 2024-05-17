@@ -35,7 +35,7 @@ class _RenunganPageState extends State<RenunganPage>
 
   void _setSelectedDate() {
     DateTime now = DateTime.now();
-    selectedMonth = DateFormat('MMMM').format(now);
+    selectedMonth = DateFormat('MMMM', 'id').format(now);
     selectedWeek = 'Minggu ${((now.day - 1) ~/ 7) + 1}';
     selectedDayIndex = now.weekday - 1;
   }

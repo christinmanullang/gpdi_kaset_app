@@ -1,0 +1,232 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class AboutPage extends StatefulWidget {
+  const AboutPage({super.key});
+
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text('Profil Gereja'),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/ibadah.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    bottom: 16,
+                    right: 16,
+                    child: GestureDetector(
+                      onTap: () {
+                        launchUrl(Uri.parse(
+                            'https://maps.app.goo.gl/AAftXiy8imAeZ8BN6'));
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF1D4A86).withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons.map_outlined,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Lokasi',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // DIFFERENT SECTION
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  const Text('GPdI Kasih Setia',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  const Text(
+                      'Gg. Bromo, Kec. Percut Sei Tuan, Kabupaten Deli Serdang, Sumatera Utara 20371, Indonesia'),
+                  GestureDetector(
+                    onTap: () {
+                      launchUrl(Uri.parse('https://wa.me/6285158321104'));
+                    },
+                    child: const Text(
+                      '+62 851 5832 1104',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1D4A86),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.email_outlined),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.facebook),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.image),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.yard_outlined),
+                      )
+                    ],
+                  ),
+                  const Text('GEMBALA SIDANG',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/ibadah.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const Text('Pdt. Berkat Simatupang S.TH',
+                      style: TextStyle(fontSize: 18)),
+
+                  // SECTION IBADAH
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10),
+                      Text('JAM IBADAH',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      Text(
+                        'MINGGU',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Text('08:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Kebaktian Sekolah Minggu'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text('11:00 WIB'),
+                          SizedBox(width: 32),
+                          Text('Kebaktian Umum I'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text('20:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Kebaktian Umum II'),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'SELASA',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Text('20:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Kebaktian KOMSEL'),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'RABU',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Text('20:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Menara Doa'),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'KAMIS',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Text('20:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Kebaktian Kaum Wanita'),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'JUMAT',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Text('20:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Kebaktian Rumah Tangga'),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'SABTU',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: [
+                          Text('20:00 WIB'),
+                          SizedBox(width: 25),
+                          Text('Kebaktian Pemuda Remaja'),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

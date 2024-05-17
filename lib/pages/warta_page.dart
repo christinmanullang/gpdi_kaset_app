@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gpdi_kaset_app/pages/jadwal_ibadah_page.dart';
+import 'jadwal_ibadah_page.dart';
+import 'jadwal_pelayan_page.dart';
 
 class WartaJemaatPage extends StatefulWidget {
   const WartaJemaatPage({super.key});
@@ -42,84 +42,8 @@ class _WartaJemaatPageState extends State<WartaJemaatPage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const [JadwalIbadahPage(), ServiceTable()],
+        children: const [JadwalIbadahPage(), JadwalPelayanPage()],
       ),
-    );
-  }
-}
-
-class ServiceTable extends StatefulWidget {
-  const ServiceTable({super.key});
-
-  @override
-  _ServiceTableState createState() => _ServiceTableState();
-}
-
-class _ServiceTableState extends State<ServiceTable> {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('pelayan').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return const CircularProgressIndicator();
-
-        // Dapatkan data dari snapshot
-        List<Map<String, dynamic>> serviceData = snapshot.data!.docs.map((doc) {
-          return {
-            'Pelayanan': doc['Doa'],
-            'Worship Leader': doc['Worship Leader'],
-            'Singers': (doc['Singers'] as List<dynamic>).join(', '),
-          };
-        }).toList();
-
-        return SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              for (var service in serviceData)
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Table(
-                    border: TableBorder.all(),
-                    columnWidths: const {
-                      0: FlexColumnWidth(1),
-                      1: FlexColumnWidth(1),
-                    },
-                    children: [
-                      _buildTableRow('Pelayanan', service['Pelayanan']),
-                      _buildTableRow(
-                          'Worship Leader', service['Worship Leader']),
-                      _buildTableRow('Singers', service['Singers']),
-                    ],
-                  ),
-                ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  // Method untuk membuat baris tabel
-  TableRow _buildTableRow(String label, String value) {
-    return TableRow(
-      children: [
-        TableCell(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
-        TableCell(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(value),
-          ),
-        ),
-      ],
     );
   }
 }

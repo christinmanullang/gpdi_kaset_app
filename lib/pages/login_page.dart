@@ -4,12 +4,19 @@ import '../auth/auth_service.dart';
 import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
-  final _emailController = TextEditingController();
-  final _pwController = TextEditingController();
+class LoginPage extends StatefulWidget {
   final void Function()? onTap;
 
-  LoginPage({super.key, this.onTap});
+  const LoginPage({super.key, this.onTap});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool _obscureText = true;
+  final _emailController = TextEditingController();
+  final _pwController = TextEditingController();
 
   void login(BuildContext context) async {
     final authService = AuthService();
@@ -65,10 +72,20 @@ class LoginPage extends StatelessWidget {
               // Password field
               MyTextField(
                 prefixIcon: const Icon(Icons.lock),
+                obscureText: _obscureText,
                 hintText: 'Password',
-                obscureText: true,
                 controller: _pwController,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      _obscureText ? Icons.visibility : Icons.visibility_off),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                ),
               ),
+
               const SizedBox(height: 16),
 
               // BUTTON
@@ -87,7 +104,7 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(color: Colors.grey[700]),
                   ),
                   GestureDetector(
-                    onTap: onTap,
+                    onTap: widget.onTap,
                     child: const Text(
                       'Registrasi disini',
                       style: TextStyle(

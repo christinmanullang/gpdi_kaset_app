@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'about_page.dart';
+import 'kontak_page.dart';
 import 'warta_page.dart';
 import 'renungan_page.dart';
 
@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 200,
+            height: 250,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/ibadah.jpg'),

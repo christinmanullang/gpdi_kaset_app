@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:intl/intl.dart';
 
 class JadwalIbadahPage extends StatefulWidget {
@@ -59,9 +58,9 @@ class _JadwalIbadahPageState extends State<JadwalIbadahPage> {
               itemBuilder: (context, index) {
                 DocumentSnapshot schedule = snapshot.data!.docs[index];
                 String namaIbadah = schedule['nama_ibadah'];
-                String hari =
-                    DateFormat('EEEE').format(schedule['tanggal'].toDate());
-                String tanggal = DateFormat('dd MMMM yyyy')
+                String hari = DateFormat('EEEE', 'id')
+                    .format(schedule['tanggal'].toDate());
+                String tanggal = DateFormat('dd MMMM yyyy', 'id')
                     .format(schedule['tanggal'].toDate());
                 String jam =
                     DateFormat.Hm().format(schedule['tanggal'].toDate());

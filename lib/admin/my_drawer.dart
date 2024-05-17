@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:gpdi_kaset_app/pages/home_page.dart';
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({super.key});
+
   // const MyDrawer({super.key});
 
   @override
@@ -55,7 +56,7 @@ class MyDrawer extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomePage(),
+                  builder: (context) => const HomePage(),
                 ),
               );
             },
