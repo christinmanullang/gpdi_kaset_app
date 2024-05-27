@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class JadwalPelayanPage extends StatefulWidget {
-  const JadwalPelayanPage({super.key});
+  const JadwalPelayanPage({Key? key}) : super(key: key);
 
   @override
   State<JadwalPelayanPage> createState() => _JadwalPelayanPageState();
@@ -36,42 +36,65 @@ class _JadwalPelayanPageState extends State<JadwalPelayanPage> {
             .where('tanggal', isLessThanOrEqualTo: _endDate)
             .snapshots(),
         builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
           if (snapshot.data!.docs.isEmpty) {
             return const Center(
-                child: Text('Tidak ada jadwal pelayan minggu ini'));
+                child: Text('Belum ada jadwal pelayan minggu ini'));
           }
-          if (!snapshot.hasData) return const CircularProgressIndicator();
-
-          List<Map<String, dynamic>> serviceData =
-              snapshot.data!.docs.map((doc) {
-            return {
-              'Pelayanan': doc['Doa'],
-              'Worship Leader': doc['Worship Leader'],
-              'Singers': (doc['Singers'] as List<dynamic>).join(', '),
-            };
-          }).toList();
 
           return SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                for (var service in serviceData)
+                const Text(
+                  'PELAYAN YANG BERTUGAS MELAYANI',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                for (var doc in snapshot.data!.docs)
                   Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Table(
                       border: TableBorder.all(),
                       columnWidths: const {
-                        0: FlexColumnWidth(1),
-                        1: FlexColumnWidth(1),
+                        0: FlexColumnWidth(2),
+                        1: FlexColumnWidth(3),
                       },
                       children: [
-                        _buildTableRow('Pelayanan', service['Pelayanan']),
-                        _buildTableRow(
-                            'Worship Leader', service['Worship Leader']),
-                        _buildTableRow('Singers', service['Singers']),
+                        _buildTableRow('Worship Leader', doc['worship_leader']),
+                        _buildTableRow('Singers',
+                            (doc['singers'] as List<dynamic>).join(', ')),
+                        _buildTableRow('Doa Pembuka', doc['doa_pembuka']),
+                        _buildTableRow('Penerima Tamu',
+                            (doc['penerima_tamu'] as List<dynamic>).join(', ')),
+                        _buildTableRow('Pemusik',
+                            'Drum: ${doc['pemusik']['drum']}, Bass: ${doc['pemusik']['bass']}, Keyboard: ${doc['pemusik']['keyboard']}'),
+                        _buildTableRow('Multimedia', doc['multimedia']),
+                        _buildTableRow('Kolektan',
+                            (doc['kolektan'] as List<dynamic>).join(', ')),
+                        _buildTableRow('Tamborin',
+                            (doc['tamborin'] as List<dynamic>).join(', ')),
+                        _buildTableRow('Firman', doc['firman']),
+                        _buildTableRow('Pelayan Perjamuan Kudus',
+                            (doc['perjamuan'] as List<dynamic>).join(', ')),
                       ],
                     ),
                   ),
+                const SizedBox(height: 16),
+                const Text(
+                  'Setiap yang melayani hadir 30 menit sebelum ibadah dimulai.',
+                  style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
               ],
             ),
           );
@@ -80,7 +103,6 @@ class _JadwalPelayanPageState extends State<JadwalPelayanPage> {
     );
   }
 
-  // Method untuk membuat baris tabel
   TableRow _buildTableRow(String label, String value) {
     return TableRow(
       children: [

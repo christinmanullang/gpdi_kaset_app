@@ -43,7 +43,8 @@ class _TambahRenunganState extends State<TambahRenungan> {
     'Rabu',
     'Kamis',
     'Jumat',
-    'Sabtu'
+    'Sabtu',
+    'Minggu'
   ];
 
   late String selectedMonth;
@@ -132,7 +133,6 @@ class _TambahRenunganState extends State<TambahRenungan> {
     );
   }
 
-  // Widget untuk dropdown bulan
   Widget _buildDropdownMonth() {
     return DropdownSearch<String>(
       items: months,
@@ -149,7 +149,6 @@ class _TambahRenunganState extends State<TambahRenungan> {
     );
   }
 
-// Widget untuk dropdown minggu
   Widget _buildDropdownWeek() {
     return DropdownSearch<String>(
       items: weeks,

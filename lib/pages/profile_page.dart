@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gpdi_kaset_app/components/my_button.dart';
 import '../components/my_textbox.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -61,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text('Profile Page'),
+        title: const Text('Profil'),
         backgroundColor: Colors.transparent,
       ),
       body: StreamBuilder<DocumentSnapshot>(
@@ -83,80 +84,67 @@ class _ProfilePageState extends State<ProfilePage> {
               avatarUrl = 'default';
             }
 
-            return ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage: AssetImage(avatarUrl),
-                      ),
-                      const SizedBox(width: 16),
-                      Text(
-                        userData['Nama'].toString().toUpperCase(),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 25),
-                const Padding(
-                  padding: EdgeInsets.only(left: 25),
-                  child: Text(
-                    'Profil Saya',
-                    style: TextStyle(
-                      color: Color(0xFF1D4A86),
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage(avatarUrl),
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          userData['Nama'].toString().toUpperCase(),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                MyTextBox(
-                  text: userData['Email'],
-                  sectionName: 'Email',
-                ),
-                const SizedBox(height: 5),
-                MyTextBox(
-                  text: userData['Nama'],
-                  sectionName: 'Nama',
-                  onPressed: () => editField('Nama'),
-                ),
-                const SizedBox(height: 5),
-                MyTextBox(
-                  text: userData['Alamat'],
-                  sectionName: 'Alamat',
-                  onPressed: () => editField('Alamat'),
-                ),
-                const SizedBox(height: 5),
-                MyTextBox(
-                  text: userData['No HP'].toString(),
-                  sectionName: 'No HP',
-                  onPressed: () => editField('No HP'.toString()),
-                ),
-                const SizedBox(height: 5),
-                MyTextBox(
-                  text: userData['Tanggal Lahir'],
-                  sectionName: "Tanggal Lahir",
-                  onPressed: () => editField('Tanggal Lahir'),
-                ),
-                const SizedBox(height: 5),
-                MyTextBox(
-                  text: userData['Jenis Kelamin'],
-                  sectionName: "Jenis Kelamin",
-                  onPressed: () => editField('Jenis Kelamin'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 25.0, vertical: 10),
-                  child: ElevatedButton(
-                    child: const Text('Keluar'),
-                    onPressed: () {
-                      FirebaseAuth.instance.signOut();
-                    },
+                  const SizedBox(height: 25),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 25),
+                    child: Text(
+                      'Profil Saya',
+                      style: TextStyle(
+                        color: Color(0xFF1D4A86),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  MyTextBox(
+                    text: userData['Email'],
+                    imagePath: 'lib/icons/email-blue.png',
+                  ),
+                  MyTextBox(
+                    text: userData['Nama'],
+                    onPressed: () => editField('Nama'),
+                    imagePath: 'lib/icons/name.png',
+                  ),
+                  MyTextBox(
+                    text: userData['Alamat'],
+                    onPressed: () => editField('Alamat'),
+                    imagePath: 'lib/icons/address.png',
+                  ),
+                  MyTextBox(
+                    text: userData['No HP'].toString(),
+                    onPressed: () => editField('No HP'.toString()),
+                    imagePath: 'lib/icons/whatsapp.png',
+                  ),
+                  MyTextBox(
+                    text: userData['Tanggal Lahir'],
+                    onPressed: () => editField('Tanggal Lahir'),
+                    imagePath: 'lib/icons/birthdate.png',
+                  ),
+                  MyButton(
+                      text: 'Keluar',
+                      onTap: () {
+                        FirebaseAuth.instance.signOut();
+                      }),
+                ],
+              ),
             );
           } else if (snapshot.hasError) {
             return Center(

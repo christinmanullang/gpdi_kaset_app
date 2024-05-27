@@ -27,6 +27,12 @@ List<Feature> features = [
     content: const RenunganPage(),
   ),
   Feature(
+    title: 'Profil Gereja',
+    description: ' ',
+    imagePath: "assets/images/church.png",
+    content: const AboutPage(),
+  ),
+  Feature(
     title: 'Warta Jemaat',
     description:
         'Lihat jadwal ibadah sepekan, dan pelayan yang bertugas melayani',
@@ -38,12 +44,6 @@ List<Feature> features = [
     description: ' ',
     imagePath: "assets/images/gallery.png",
     content: const Scaffold(),
-  ),
-  Feature(
-    title: 'Profil Gereja',
-    description: ' ',
-    imagePath: "assets/images/church.png",
-    content: const AboutPage(),
   ),
 ];
 
@@ -87,9 +87,12 @@ class HomePage extends StatelessWidget {
             height: 250,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/ibadah.jpg'),
-                fit: BoxFit.cover,
-              ),
+                  image: AssetImage('assets/images/ibadah.jpg'),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Color(0xFF1D4A86),
+                    BlendMode.dstATop,
+                  )),
             ),
             child: const Center(
               child: Text(
@@ -106,6 +109,7 @@ class HomePage extends StatelessWidget {
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
+                childAspectRatio: 115 / 135,
               ),
               itemCount: features.length,
               itemBuilder: (context, index) {
@@ -113,9 +117,9 @@ class HomePage extends StatelessWidget {
                   onTap: () =>
                       navigateToFeatureDetails(context, features[index]),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Card(
-                      color: const Color(0xFFB0BEC5),
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -134,7 +138,7 @@ class HomePage extends StatelessWidget {
                             features[index].description,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                                fontSize: 13, color: Colors.blueGrey),
+                                fontSize: 12.5, color: Colors.blueGrey),
                           ),
                         ],
                       ),

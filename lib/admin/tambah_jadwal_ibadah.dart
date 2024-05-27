@@ -9,10 +9,10 @@ class TambahJadwalIbadah extends StatefulWidget {
 }
 
 class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
-  final TextEditingController leaderController = TextEditingController();
-  final TextEditingController ibadahController = TextEditingController();
-  final TextEditingController preacherController = TextEditingController();
-  final TextEditingController tempatController = TextEditingController();
+  final leaderController = TextEditingController();
+  final ibadahController = TextEditingController();
+  final preacherController = TextEditingController();
+  final tempatController = TextEditingController();
 
   DateTime selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -44,10 +44,10 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
   }
 
   void _submitSchedule() {
-    String leader = leaderController.text.trim();
     String ibadah = ibadahController.text.trim();
-    String preacher = preacherController.text.trim();
     String tempat = tempatController.text.trim();
+    String leader = leaderController.text.trim();
+    String preacher = preacherController.text.trim();
 
     DateTime selectedDateTime = DateTime(
       selectedDate.year,
@@ -64,40 +64,16 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
       'tanggal': selectedDateTime,
       'tempat': tempat,
     }).then((value) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Success'),
-            content: const Text('Jadwal ibadah berhasil ditambahkan!'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
+      leaderController.clear();
+      preacherController.clear();
+      ibadahController.clear();
+      tempatController.clear();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Jadwak ibadah berhasil ditambahkan')),
       );
     }).catchError((error) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Error'),
-            content: Text('Terjadi kesalahan: $error'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          );
-        },
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $error')),
       );
     });
   }

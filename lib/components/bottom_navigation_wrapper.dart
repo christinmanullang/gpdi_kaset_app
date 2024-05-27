@@ -35,11 +35,22 @@ class _BottomNavigationWrapperState extends State<BottomNavigationWrapper> {
         currentIndex: _selectedIndex,
         onTap: _navigateBottomBar,
         type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.admin_panel_settings), label: 'Admin'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+              icon: Image.asset(
+                'lib/icons/church.png',
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Image.asset(
+                'lib/icons/admin.png',
+              ),
+              label: 'Admin'),
+          BottomNavigationBarItem(
+              icon: Image.asset(
+                'lib/icons/profile.png',
+              ),
+              label: 'Profile'),
         ],
       ),
     );

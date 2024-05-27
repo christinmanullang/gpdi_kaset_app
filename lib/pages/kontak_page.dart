@@ -22,11 +22,15 @@ class _AboutPageState extends State<AboutPage> {
           children: [
             Container(
               height: 200,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/ibadah.jpg'),
-                  fit: BoxFit.cover,
-                ),
+                    image: const AssetImage('assets/images/ibadah.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black
+                          .withOpacity(0.5), // Ubah nilai opacity di sini
+                      BlendMode.dstATop,
+                    )),
               ),
               child: Stack(
                 children: [
@@ -44,14 +48,12 @@ class _AboutPageState extends State<AboutPage> {
                           color: const Color(0xFF1D4A86).withOpacity(0.5),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Icon(
-                              Icons.map_outlined,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              'Lokasi',
+                            Image.asset('lib/icons/maps.png',
+                                color: Colors.white),
+                            const Text(
+                              ' Lokasi',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -70,7 +72,6 @@ class _AboutPageState extends State<AboutPage> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Column(
                 children: [
-                  const SizedBox(height: 10),
                   const Text('GPdI Kasih Setia',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -92,19 +93,25 @@ class _AboutPageState extends State<AboutPage> {
                     children: [
                       IconButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.email_outlined),
+                        icon: Image.asset('lib/icons/email.png'),
                       ),
                       IconButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.facebook),
+                        icon: Image.asset('lib/icons/facebook.png'),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.image),
+                        onPressed: () {
+                          launchUrl(Uri.parse(
+                              'https://youtube.com/@christinaprilliamanullang5227?si=07mmD8gAdTXW3Wyn'));
+                        },
+                        icon: Image.asset('lib/icons/youtube.png'),
                       ),
                       IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.yard_outlined),
+                        onPressed: () {
+                          launchUrl(Uri.parse(
+                              'https://www.instagram.com/christin.clj'));
+                        },
+                        icon: Image.asset('lib/icons/instagram.png'),
                       )
                     ],
                   ),
@@ -122,8 +129,7 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                     ),
                   ),
-                  const Text('Pdt. Berkat Simatupang S.TH',
-                      style: TextStyle(fontSize: 18)),
+                  const Text('Pdt. Berkat Simatupang S.TH', style: TextStyle()),
 
                   // SECTION IBADAH
                   const Column(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gpdi_kaset_app/admin/data_jemaat.dart';
 import 'package:gpdi_kaset_app/admin/tambah_jadwal_ibadah.dart';
+import 'package:gpdi_kaset_app/admin/tambah_jadwal_pelayan.dart';
 
 import '../pages/home_page.dart';
 import 'my_drawer.dart';
@@ -28,6 +29,11 @@ List<Feature> features = [
     title: 'Tambah Jadwal Ibadah',
     icon: const Icon(Icons.edit_calendar),
     content: const TambahJadwalIbadah(),
+  ),
+  Feature(
+    title: 'Tambah Jadwal Pelayan',
+    icon: const Icon(Icons.edit_calendar),
+    content: const TambahJadwalPelayan(),
   ),
   Feature(
     title: 'Data Jemaat',

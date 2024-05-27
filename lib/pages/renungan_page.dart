@@ -23,7 +23,7 @@ class _RenunganPageState extends State<RenunganPage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 7, vsync: this);
     _setSelectedDate();
   }
 
@@ -56,6 +56,7 @@ class _RenunganPageState extends State<RenunganPage>
                 Tab(text: 'Kamis'),
                 Tab(text: 'Jumat'),
                 Tab(text: 'Sabtu'),
+                Tab(text: 'Minggu'),
               ],
               onTap: (index) {
                 setState(() {
