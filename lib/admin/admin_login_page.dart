@@ -17,7 +17,8 @@ class AdminLoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.sensor_occupied, size: 120),
+            Image.asset('assets/images/admin.png', scale: 5),
+            // const Icon(Icons.sensor_occupied, size: 120),
             const SizedBox(height: 16),
             Text(
               'MASUK SEBAGAI ADMIN',

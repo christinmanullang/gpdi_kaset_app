@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gpdi_kaset_app/components/my_button.dart';
 
 class TambahJadwalIbadah extends StatefulWidget {
   const TambahJadwalIbadah({Key? key}) : super(key: key);
@@ -87,21 +88,18 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
         backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(25.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const SizedBox(height: 16.0),
+          children: [
             TextField(
               controller: ibadahController,
               decoration: const InputDecoration(labelText: 'Nama Ibadah'),
             ),
-            const SizedBox(height: 16.0),
             TextField(
               controller: tempatController,
               decoration: const InputDecoration(labelText: 'Tempat'),
             ),
-            const SizedBox(height: 16.0),
             TextField(
               controller: leaderController,
               decoration: const InputDecoration(labelText: 'P. Pujian'),
@@ -110,7 +108,6 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
               controller: preacherController,
               decoration: const InputDecoration(labelText: 'F. Tuhan'),
             ),
-            const SizedBox(height: 16.0),
             GestureDetector(
               onTap: () => _selectDate(context),
               child: AbsorbPointer(
@@ -122,7 +119,6 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
                 ),
               ),
             ),
-            const SizedBox(height: 16.0),
             GestureDetector(
               onTap: () => _selectTime(context),
               child: AbsorbPointer(
@@ -134,10 +130,10 @@ class _TambahJadwalIbadahState extends State<TambahJadwalIbadah> {
                 ),
               ),
             ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: _submitSchedule,
-              child: const Text('Tambah Jadwal'),
+            const SizedBox(height: 16),
+            MyButton(
+              text: 'Tambah \nJadwal Ibadah',
+              onTap: _submitSchedule,
             ),
           ],
         ),

@@ -92,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -100,43 +100,38 @@ class _RegisterPageState extends State<RegisterPage> {
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'Email',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: false,
                 controller: _emailController,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'Nama Lengkap',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: false,
                 controller: _nameController,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'Alamat',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: false,
                 controller: _addressController,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'No Handphone',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: false,
                 controller: _phoneNumberController,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'Tanggal Lahir',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: false,
                 controller: _dateController,
@@ -146,62 +141,64 @@ class _RegisterPageState extends State<RegisterPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.only(left: 16.0, top: 8.0),
+                    padding: EdgeInsets.only(top: 8.0),
                     child: Text('Pilih jenis kelamin'),
                   ),
                   Row(
                     children: [
                       Expanded(
-                        child: ListTile(
-                          title: const Text('Pria'),
-                          leading: Radio<String>(
-                            value: 'Pria',
-                            groupValue: _gender,
-                            onChanged: (value) {
-                              setState(() {
-                                _gender = value;
-                              });
-                            },
-                          ),
+                        child: Row(
+                          children: [
+                            Radio<String>(
+                              value: 'Pria',
+                              groupValue: _gender,
+                              onChanged: (value) {
+                                setState(() {
+                                  _gender = value;
+                                });
+                              },
+                            ),
+                            const Text('Pria'),
+                          ],
                         ),
                       ),
                       Expanded(
-                        child: ListTile(
-                          title: const Text('Wanita'),
-                          leading: Radio<String>(
-                            value: 'Wanita',
-                            groupValue: _gender,
-                            onChanged: (value) {
-                              setState(() {
-                                _gender = value;
-                              });
-                            },
-                          ),
+                        child: Row(
+                          children: [
+                            Radio<String>(
+                              value: 'Wanita',
+                              groupValue: _gender,
+                              onChanged: (value) {
+                                setState(() {
+                                  _gender = value;
+                                });
+                              },
+                            ),
+                            const Text('Wanita'),
+                          ],
                         ),
                       ),
                     ],
-                  ),
+                  )
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'Password',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: true,
                 controller: _pwController,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
               TextField(
                 decoration: const InputDecoration(
                   labelText: 'Konfirmasi password',
-                  contentPadding: EdgeInsets.all(12),
                 ),
                 obscureText: true,
                 controller: _confirmPwController,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 5),
 
               const SizedBox(height: 25),
 

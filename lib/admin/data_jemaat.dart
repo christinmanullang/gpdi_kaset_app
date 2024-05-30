@@ -27,25 +27,30 @@ class DataJemaat extends StatelessWidget {
 
           final List<DocumentSnapshot> jemaatList = snapshot.data!.docs;
 
-          return DataTable(
-            columns: const [
-              DataColumn(label: Text('Nama')),
-              DataColumn(label: Text('Email')),
-              DataColumn(label: Text('Nomor HP')),
-              DataColumn(label: Text('Alamat')),
-              DataColumn(label: Text('Jenis Kelamin')),
-            ],
-            rows: jemaatList.map((jemaat) {
-              final Map<String, dynamic> data =
-                  jemaat.data() as Map<String, dynamic>;
-              return DataRow(cells: [
-                DataCell(Text(data['Nama'] ?? '')),
-                DataCell(Text(data['Email'] ?? '')),
-                DataCell(Text(data['No HP'].toString())),
-                DataCell(Text(data['Alamat'])),
-                DataCell(Text(data['Jenis Kelamin'])),
-              ]);
-            }).toList(),
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columns: const [
+                DataColumn(label: Text('Nama')),
+                DataColumn(label: Text('Email')),
+                DataColumn(label: Text('Nomor HP')),
+                DataColumn(label: Text('Alamat')),
+                DataColumn(label: Text('Jenis Kelamin')),
+                DataColumn(label: Text('Tanggal Lahir')),
+              ],
+              rows: jemaatList.map((jemaat) {
+                final Map<String, dynamic> data =
+                    jemaat.data() as Map<String, dynamic>;
+                return DataRow(cells: [
+                  DataCell(Text(data['Nama'] ?? '')),
+                  DataCell(Text(data['Email'] ?? '')),
+                  DataCell(Text(data['No HP'].toString())),
+                  DataCell(Text(data['Alamat'])),
+                  DataCell(Text(data['Jenis Kelamin'])),
+                  DataCell(Text(data['Tanggal Lahir'])),
+                ]);
+              }).toList(),
+            ),
           );
         },
       ),

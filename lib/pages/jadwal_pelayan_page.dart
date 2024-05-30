@@ -88,9 +88,9 @@ class _JadwalPelayanPageState extends State<JadwalPelayanPage> {
                       ],
                     ),
                   ),
-                const SizedBox(height: 16),
                 const Text(
-                  'Setiap yang melayani hadir 30 menit sebelum ibadah dimulai.',
+                  'Setiap yang melayani hadir 30 menit \nsebelum ibadah dimulai.',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontStyle: FontStyle.italic,
                   ),

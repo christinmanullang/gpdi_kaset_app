@@ -27,8 +27,7 @@ class _AboutPageState extends State<AboutPage> {
                     image: const AssetImage('assets/images/ibadah.jpg'),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
-                      Colors.black
-                          .withOpacity(0.5), // Ubah nilai opacity di sini
+                      Colors.black.withOpacity(0.5),
                       BlendMode.dstATop,
                     )),
               ),
@@ -68,71 +67,73 @@ class _AboutPageState extends State<AboutPage> {
             ),
 
             // DIFFERENT SECTION
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Column(
-                children: [
-                  const Text('GPdI Kasih Setia',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  const Text(
-                      'Gg. Bromo, Kec. Percut Sei Tuan, Kabupaten Deli Serdang, Sumatera Utara 20371, Indonesia'),
-                  GestureDetector(
-                    onTap: () {
-                      launchUrl(Uri.parse('https://wa.me/6285158321104'));
-                    },
-                    child: const Text(
-                      '+62 851 5832 1104',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF1D4A86),
-                      ),
+            Column(
+              children: [
+                const Text('GPdI Kasih Setia',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Text(
+                    'Gg. Bromo, Kec. Percut Sei Tuan, \nKabupaten Deli Serdang, \nSumatera Utara 20371, Indonesia',
+                    textAlign: TextAlign.center),
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse('https://wa.me/6285158321104'));
+                  },
+                  child: const Text(
+                    '+62 851 5832 1104',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1D4A86),
                     ),
                   ),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('lib/icons/email.png'),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Image.asset('lib/icons/facebook.png'),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          launchUrl(Uri.parse(
-                              'https://youtube.com/@christinaprilliamanullang5227?si=07mmD8gAdTXW3Wyn'));
-                        },
-                        icon: Image.asset('lib/icons/youtube.png'),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          launchUrl(Uri.parse(
-                              'https://www.instagram.com/christin.clj'));
-                        },
-                        icon: Image.asset('lib/icons/instagram.png'),
-                      )
-                    ],
-                  ),
-                  const Text('GEMBALA SIDANG',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8.0),
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/ibadah.jpg'),
-                        fit: BoxFit.cover,
-                      ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Image.asset('lib/icons/email.png'),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Image.asset('lib/icons/facebook.png'),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        launchUrl(Uri.parse(
+                            'https://youtube.com/@christinaprilliamanullang5227?si=07mmD8gAdTXW3Wyn'));
+                      },
+                      icon: Image.asset('lib/icons/youtube.png'),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        launchUrl(Uri.parse(
+                            'https://www.instagram.com/christin.clj'));
+                      },
+                      icon: Image.asset('lib/icons/instagram.png'),
+                    )
+                  ],
+                ),
+                const Text('GEMBALA SIDANG',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    image: const DecorationImage(
+                      image: AssetImage('assets/images/ibadah.jpg'),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  const Text('Pdt. Berkat Simatupang S.TH', style: TextStyle()),
+                ),
+                const Text('Pdt. Berkat Simatupang S.TH', style: TextStyle()),
 
-                  // SECTION IBADAH
-                  const Column(
+                // SECTION IBADAH
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 10),
@@ -226,9 +227,9 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
-                ],
-              ),
+                ),
+                const SizedBox(height: 10),
+              ],
             )
           ],
         ),

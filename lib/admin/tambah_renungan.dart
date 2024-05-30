@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gpdi_kaset_app/components/my_button.dart';
 
 class TambahRenungan extends StatefulWidget {
   const TambahRenungan({super.key});
@@ -90,11 +91,6 @@ class _TambahRenunganState extends State<TambahRenungan> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Tambah Renungan',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 16),
               TextField(
                 controller: tanggalController,
                 decoration: const InputDecoration(labelText: 'Tanggal'),
@@ -122,9 +118,9 @@ class _TambahRenunganState extends State<TambahRenungan> {
                 maxLines: 3,
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _submitRenungan,
-                child: const Text('Tambah Renungan'),
+              MyButton(
+                onTap: _submitRenungan,
+                text: 'Tambah Renungan',
               ),
             ],
           ),

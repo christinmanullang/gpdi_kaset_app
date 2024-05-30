@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         )),
         routes: {
-          '/data_jemaat': (context) => const DataJemaat(),
+          '/data_jemaat': (context) => DataJemaat(),
           '/adminhomepage': (context) => const AdminHomePage(),
           '/jadwal_ibadah': (context) => const TambahJadwalIbadah(),
         },

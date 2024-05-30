@@ -86,6 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
             return SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -99,7 +100,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         const SizedBox(width: 16),
                         Text(
                           userData['Nama'].toString().toUpperCase(),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                       ],
                     ),
@@ -138,6 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     onPressed: () => editField('Tanggal Lahir'),
                     imagePath: 'lib/icons/birthdate.png',
                   ),
+                  const SizedBox(height: 25),
                   MyButton(
                       text: 'Keluar',
                       onTap: () {

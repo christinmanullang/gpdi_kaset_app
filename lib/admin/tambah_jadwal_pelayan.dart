@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:gpdi_kaset_app/components/my_button.dart';
 
 class TambahJadwalPelayan extends StatefulWidget {
   const TambahJadwalPelayan({super.key});
@@ -81,7 +82,7 @@ class _TambahJadwalPelayanState extends State<TambahJadwalPelayan> {
         title: const Text('Tambah Jadwal Pelayan'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(25.0),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -114,10 +115,10 @@ class _TambahJadwalPelayanState extends State<TambahJadwalPelayan> {
               _buildTextField(_firmanController, 'Firman'),
               _buildTextField(_perjamuanController,
                   'Pelayan Perjamuan (pisahkan dengan koma)'),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _submitForm,
-                child: const Text('Submit'),
+              const SizedBox(height: 16),
+              MyButton(
+                onTap: _submitForm,
+                text: 'Tambah \nJadwal Pelayan',
               ),
             ],
           ),
@@ -127,14 +128,10 @@ class _TambahJadwalPelayanState extends State<TambahJadwalPelayan> {
   }
 
   Widget _buildTextField(TextEditingController controller, String labelText) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: labelText,
-          border: const OutlineInputBorder(),
-        ),
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: labelText,
       ),
     );
   }

@@ -174,7 +174,8 @@ class _RenunganPageState extends State<RenunganPage>
                   ),
                   Center(
                     child: Text(
-                      '\n  ${renungan['judul']}',
+                      '\n${renungan['judul']},',
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

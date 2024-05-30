@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'kontak_page.dart';
 import 'warta_page.dart';
 import 'renungan_page.dart';
+import 'gallery_page.dart';
 
 class Feature {
   final String title;
@@ -43,7 +44,7 @@ List<Feature> features = [
     title: 'Galeri',
     description: ' ',
     imagePath: "assets/images/gallery.png",
-    content: const Scaffold(),
+    content: GalleryPage(),
   ),
 ];
 
@@ -83,14 +84,13 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: double.infinity,
-            height: 250,
-            decoration: const BoxDecoration(
+            height: 200,
+            decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/ibadah.jpg'),
+                  image: const AssetImage('assets/images/ibadah.jpg'),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                    Color(0xFF1D4A86),
+                    Colors.black.withOpacity(0.5),
                     BlendMode.dstATop,
                   )),
             ),
@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 20),
               ),
             ),
           ),
@@ -109,7 +109,7 @@ class HomePage extends StatelessWidget {
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 115 / 135,
+                childAspectRatio: 120 / 135,
               ),
               itemCount: features.length,
               itemBuilder: (context, index) {

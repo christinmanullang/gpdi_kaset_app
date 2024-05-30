@@ -81,7 +81,7 @@ class _JadwalIbadahPageState extends State<JadwalIbadahPage> {
                         Text('Jam $jam WIB - selesai'),
                         const SizedBox(height: 8),
                         Text(
-                          'Di  ${tempat.replaceAll('\\n', '\n')}',
+                          'Di ${tempat.replaceAll('\\n', '\n')}',
                           textAlign: TextAlign.center,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
