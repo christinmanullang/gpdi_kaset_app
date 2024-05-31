@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gpdi_kaset_app/admin/data_jemaat.dart';
 import 'package:gpdi_kaset_app/admin/tambah_jadwal_ibadah.dart';
 import 'package:gpdi_kaset_app/admin/tambah_jadwal_pelayan.dart';
-
+import 'package:gpdi_kaset_app/admin/tambah_renungan.dart';
 import '../pages/home_page.dart';
-import 'my_drawer.dart';
-import 'tambah_renungan.dart';
 
 class Feature {
   final String title;
@@ -40,6 +38,11 @@ List<Feature> features = [
     icon: const Icon(Icons.people),
     content: const DataJemaat(),
   ),
+  Feature(
+    title: 'Kembali ke Beranda',
+    icon: const Icon(Icons.people),
+    content: const HomePage(),
+  ),
 ];
 
 // NAVIGATE TO SELECTED PAGE
@@ -59,7 +62,6 @@ class AdminHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      drawer: const MyDrawer(),
       appBar: AppBar(
         title: const Text('Halaman Admin'),
         backgroundColor: Colors.transparent,
@@ -67,34 +69,45 @@ class AdminHomePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const HomePage()),
+                MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ),
               );
             },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: features.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () => navigateToFeatureDetails(context, features[index]),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                color: const Color(0xFFB0BEC5),
-                child: ListTile(
-                  leading: features[index].icon,
-                  title: Text(
-                    features[index].title,
-                    style: const TextStyle(fontSize: 16),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: features.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () =>
+                      navigateToFeatureDetails(context, features[index]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Card(
+                      color: const Color(0xFFB0BEC5),
+                      child: ListTile(
+                        leading: features[index].icon,
+                        title: Text(
+                          features[index].title,
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }

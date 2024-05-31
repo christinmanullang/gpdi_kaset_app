@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GalleryPage extends StatelessWidget {
-  final List<Map<String, String>> galleryItems = [
+class GaleriPage extends StatelessWidget {
+  final List<Map<String, String>> galeriItems = [
     {'title': 'Foto Gereja', 'image': 'assets/images/gedung-gereja.jpg'},
     {
       'title': 'Keluarga Gembala',
@@ -13,13 +13,15 @@ class GalleryPage extends StatelessWidget {
     {'title': 'Komsel', 'image': 'assets/images/komsel.jpg'},
   ];
 
-  GalleryPage({super.key});
+  GaleriPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: const Text('Galeri'),
+        backgroundColor: Colors.transparent,
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10.0),
@@ -28,16 +30,15 @@ class GalleryPage extends StatelessWidget {
           crossAxisSpacing: 10.0,
           mainAxisSpacing: 10.0,
         ),
-        itemCount: galleryItems.length,
+        itemCount: galeriItems.length,
         itemBuilder: (context, index) {
           return GridTile(
             footer: GridTileBar(
               backgroundColor: Colors.black54,
-              title: Text(galleryItems[index]['title']!,
+              title: Text(galeriItems[index]['title']!,
                   textAlign: TextAlign.center),
             ),
-            child:
-                Image.asset(galleryItems[index]['image']!, fit: BoxFit.cover),
+            child: Image.asset(galeriItems[index]['image']!, fit: BoxFit.cover),
           );
         },
       ),

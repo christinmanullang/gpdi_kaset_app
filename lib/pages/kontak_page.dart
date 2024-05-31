@@ -24,7 +24,7 @@ class _AboutPageState extends State<AboutPage> {
               height: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: const AssetImage('assets/images/ibadah.jpg'),
+                    image: const AssetImage('assets/images/banner2.jpg'),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.5),
@@ -44,7 +44,7 @@ class _AboutPageState extends State<AboutPage> {
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1D4A86).withOpacity(0.5),
+                          color: const Color(0xFF1D4A86),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
@@ -114,21 +114,23 @@ class _AboutPageState extends State<AboutPage> {
                     )
                   ],
                 ),
+                const SizedBox(height: 10),
                 const Text('GEMBALA SIDANG',
                     style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 Container(
-                  width: 150,
-                  height: 150,
+                  width: 200,
+                  height: 200,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(100.0),
                     image: const DecorationImage(
-                      image: AssetImage('assets/images/ibadah.jpg'),
+                      image: AssetImage('assets/images/pastor.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                const Text('Pdt. Berkat Simatupang S.TH', style: TextStyle()),
+                const Text('Pdt. Berkat Simatupang S.TH',
+                    style: TextStyle(fontSize: 16)),
 
                 // SECTION IBADAH
                 const Padding(
@@ -139,7 +141,7 @@ class _AboutPageState extends State<AboutPage> {
                       SizedBox(height: 10),
                       Text('JAM IBADAH',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
+                              fontSize: 18, fontWeight: FontWeight.bold)),
                       Text(
                         'MINGGU',
                         style: TextStyle(fontWeight: FontWeight.bold),

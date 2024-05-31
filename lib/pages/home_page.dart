@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'kontak_page.dart';
 import 'warta_page.dart';
 import 'renungan_page.dart';
-import 'gallery_page.dart';
+import 'galeri_page.dart';
 
 class Feature {
   final String title;
@@ -28,12 +28,6 @@ List<Feature> features = [
     content: const RenunganPage(),
   ),
   Feature(
-    title: 'Profil Gereja',
-    description: ' ',
-    imagePath: "assets/images/church.png",
-    content: const AboutPage(),
-  ),
-  Feature(
     title: 'Warta Jemaat',
     description:
         'Lihat jadwal ibadah sepekan, dan pelayan yang bertugas melayani',
@@ -41,10 +35,16 @@ List<Feature> features = [
     content: const WartaJemaatPage(),
   ),
   Feature(
+    title: 'Profil Gereja',
+    description: ' ',
+    imagePath: "assets/images/church.png",
+    content: const AboutPage(),
+  ),
+  Feature(
     title: 'Galeri',
     description: ' ',
     imagePath: "assets/images/gallery.png",
-    content: GalleryPage(),
+    content: GaleriPage(),
   ),
 ];
 
@@ -87,17 +87,17 @@ class HomePage extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: const AssetImage('assets/images/ibadah.jpg'),
+                  image: const AssetImage('assets/images/banner.jpg'),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5),
+                    Colors.black.withOpacity(0.7),
                     BlendMode.dstATop,
                   )),
             ),
             child: const Center(
               child: Text(
                 'Selamat datang di \nAplikasi GPdI Kasih Setia',
-                textAlign: TextAlign.center,
+                // textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -138,7 +138,7 @@ class HomePage extends StatelessWidget {
                             features[index].description,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                                fontSize: 12.5, color: Colors.blueGrey),
+                                fontSize: 12, color: Colors.blueGrey),
                           ),
                         ],
                       ),
