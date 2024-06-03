@@ -73,7 +73,7 @@ class _AboutPageState extends State<AboutPage> {
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 const Text(
-                    'Gg. Bromo, Kec. Percut Sei Tuan, \nKabupaten Deli Serdang, \nSumatera Utara 20371, Indonesia',
+                    'Jln Medan-Bt Kuis, Gg Alridho & Gg Bromo, Tembung. \nKec. Percut Sei Tuan, Kabupaten Deli Serdang, \nSumatera Utara 20371, Indonesia',
                     textAlign: TextAlign.center),
                 GestureDetector(
                   onTap: () {

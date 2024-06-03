@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class JadwalPelayanPage extends StatefulWidget {
   const JadwalPelayanPage({Key? key}) : super(key: key);
@@ -59,7 +60,10 @@ class _JadwalPelayanPageState extends State<JadwalPelayanPage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                for (var doc in snapshot.data!.docs)
+                for (var doc in snapshot.data!.docs) ...[
+                  Text(
+                    'Hari ${DateFormat('EEEE', 'id').format(doc['tanggal'].toDate())}, ${DateFormat('dd MMMM yyyy', 'id').format(doc['tanggal'].toDate())}',
+                  ),
                   Container(
                     padding: const EdgeInsets.all(8.0),
                     child: Table(
@@ -88,13 +92,9 @@ class _JadwalPelayanPageState extends State<JadwalPelayanPage> {
                       ],
                     ),
                   ),
+                ],
                 const Text(
-                  'Setiap yang melayani hadir 30 menit \nsebelum ibadah dimulai.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
+                    'Setiap yang melayani hadir 30 menit sebelum ibadah dimulai.')
               ],
             ),
           );

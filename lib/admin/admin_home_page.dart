@@ -69,8 +69,6 @@ class AdminHomePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              Navigator.pop(context);
-              Navigator.pop(context);
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
