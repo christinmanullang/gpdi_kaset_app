@@ -73,29 +73,23 @@ class _AboutPageState extends State<AboutPage> {
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 const Text(
-                    'Jln Medan-Bt Kuis, Gg Alridho & Gg Bromo, Tembung. \nKec. Percut Sei Tuan, Kabupaten Deli Serdang, \nSumatera Utara 20371, Indonesia',
+                    'Jln Medan-Bt Kuis, Gg Alridho & Gg Bromo, \nTembung. Kec. Percut Sei Tuan, Kab. Deli Serdang, \nSumatera Utara 20371, Indonesia',
                     textAlign: TextAlign.center),
-                GestureDetector(
-                  onTap: () {
-                    launchUrl(Uri.parse('https://wa.me/6285158321104'));
-                  },
-                  child: const Text(
-                    '+62 851 5832 1104',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1D4A86),
-                    ),
-                  ),
-                ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('lib/icons/email.png'),
+                      onPressed: () {
+                        launchUrl(Uri.parse('https://wa.me/6285158321104'));
+                      },
+                      icon: Image.asset('lib/icons/whatsapp.png'),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        launchUrl(Uri.parse(
+                            'https://id-id.facebook.com/gpdikasihsetia.tembung.7/'));
+                      },
                       icon: Image.asset('lib/icons/facebook.png'),
                     ),
                     IconButton(

@@ -207,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onTap: () => register(context),
                 text: 'Sign Up',
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 8),
 
               // ASKING TO LOGIN
               Row(
@@ -229,7 +229,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 8)
+              const SizedBox(height: 16)
             ],
           ),
         ),

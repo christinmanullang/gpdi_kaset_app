@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "449687596316",
-    "project_id": "db-gpdi-kaset-app",
-    "storage_bucket": "db-gpdi-kaset-app.appspot.com"
+    "project_number": "320260101838",
+    "project_id": "gpdi-kaset-apps",
+    "storage_bucket": "gpdi-kaset-apps.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:449687596316:android:8d1680ae54159704cd5ed9",
+        "mobilesdk_app_id": "1:320260101838:android:c7c11ab8da3815e583e29f",
         "android_client_info": {
           "package_name": "com.example.gpdi_kaset_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCEQAHZosudHd_J94E6OtndceHQGFqo_qs"
+          "current_key": "AIzaSyCLs2qPeEJJdG4UfA4JZ_4bT0H8F6R_ASU"
         }
       ],
       "services": {

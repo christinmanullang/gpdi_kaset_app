@@ -47,29 +47,29 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAF1u0Mp9AJZPP1GQJNfIv0Kw99W7-ssUM',
-    appId: '1:449687596316:web:439e55159dd4b2b6cd5ed9',
-    messagingSenderId: '449687596316',
-    projectId: 'db-gpdi-kaset-app',
-    authDomain: 'db-gpdi-kaset-app.firebaseapp.com',
-    storageBucket: 'db-gpdi-kaset-app.appspot.com',
+    apiKey: 'AIzaSyAlLyqTmmUR90vmfS7Yx-7F85cvPMv7jjg',
+    appId: '1:320260101838:web:5ce1d0b9811bc53b83e29f',
+    messagingSenderId: '320260101838',
+    projectId: 'gpdi-kaset-apps',
+    authDomain: 'gpdi-kaset-apps.firebaseapp.com',
+    storageBucket: 'gpdi-kaset-apps.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCEQAHZosudHd_J94E6OtndceHQGFqo_qs',
-    appId: '1:449687596316:android:8d1680ae54159704cd5ed9',
-    messagingSenderId: '449687596316',
-    projectId: 'db-gpdi-kaset-app',
-    storageBucket: 'db-gpdi-kaset-app.appspot.com',
+    apiKey: 'AIzaSyCLs2qPeEJJdG4UfA4JZ_4bT0H8F6R_ASU',
+    appId: '1:320260101838:android:c7c11ab8da3815e583e29f',
+    messagingSenderId: '320260101838',
+    projectId: 'gpdi-kaset-apps',
+    storageBucket: 'gpdi-kaset-apps.appspot.com',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCf622tMEP6smM5Y8qYIs_h6oC5DTL9fME',
-    appId: '1:751540178046:web:b239becefd1fe85ec5dc2f',
-    messagingSenderId: '751540178046',
-    projectId: 'gpdi-kaset-flutter-app',
-    authDomain: 'gpdi-kaset-flutter-app.firebaseapp.com',
-    storageBucket: 'gpdi-kaset-flutter-app.appspot.com',
+    apiKey: 'AIzaSyAlLyqTmmUR90vmfS7Yx-7F85cvPMv7jjg',
+    appId: '1:320260101838:web:513a6692afbfcc5f83e29f',
+    messagingSenderId: '320260101838',
+    projectId: 'gpdi-kaset-apps',
+    authDomain: 'gpdi-kaset-apps.firebaseapp.com',
+    storageBucket: 'gpdi-kaset-apps.appspot.com',
   );
 
 }
