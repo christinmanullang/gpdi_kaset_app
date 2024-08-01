@@ -21,7 +21,7 @@ class _BottomNavigationWrapperState extends State<BottomNavigationWrapper> {
   }
 
   final List<Widget> _pages = [
-    const HomePage(),
+    HomePage(),
     AdminLoginPage(),
     const ProfilePage(),
   ];

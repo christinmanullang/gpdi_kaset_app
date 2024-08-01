@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gpdi_kaset_app/pages/keuangan_page.dart';
 
+import '../components/my_button.dart';
 import 'kontak_page.dart';
 import 'warta_page.dart';
 import 'renungan_page.dart';
@@ -25,26 +27,26 @@ List<Feature> features = [
     title: 'Renungan',
     description: ' ',
     imagePath: "assets/images/bible.png",
-    content: const RenunganPage(),
+    content: RenunganPage(),
   ),
   Feature(
     title: 'Warta Jemaat',
     description:
         'Lihat jadwal ibadah sepekan, dan pelayan yang bertugas melayani',
     imagePath: "assets/images/schedule.png",
-    content: const WartaJemaatPage(),
+    content: WartaJemaatPage(),
   ),
   Feature(
     title: 'Profil Gereja',
     description: ' ',
     imagePath: "assets/images/church.png",
-    content: const AboutPage(),
+    content: AboutPage(),
   ),
   Feature(
-    title: 'Galeri',
+    title: 'Keuangan Gereja',
     description: ' ',
     imagePath: "assets/images/gallery.png",
-    content: GaleriPage(),
+    content: KeuanganPage(),
   ),
 ];
 
@@ -59,7 +61,7 @@ void navigateToFeatureDetails(BuildContext context, Feature feature) {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: const Text('GPdI Kasih Setia'),
+          title: Text('GPdI Kasih Setia'),
           centerTitle: true,
           leading: Image.asset(
             'assets/images/gpdi-logo.png',
@@ -77,7 +79,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 FirebaseAuth.instance.signOut();
               },
-              icon: const Icon(Icons.logout),
+              icon: Icon(Icons.logout),
             ),
           ]),
       body: Column(
@@ -87,27 +89,56 @@ class HomePage extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: const AssetImage('assets/images/banner.jpg'),
+                  image: AssetImage('assets/images/banner.jpg'),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
                     Colors.black.withOpacity(0.7),
                     BlendMode.dstATop,
                   )),
             ),
-            child: const Center(
-              child: Text(
-                'Selamat datang di \nAplikasi GPdI Kasih Setia',
-                // textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+            child: Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/banner.jpg',
+                    fit: BoxFit.cover,
+                    height: double.infinity,
+                    width: double.infinity,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Selamat datang di \nAplikasi GPdI Kasih Setia',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      MyButton(
+                        text: 'Galeri',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GaleriPage(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
           Expanded(
             child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 120 / 135,
               ),
@@ -117,9 +148,9 @@ class HomePage extends StatelessWidget {
                   onTap: () =>
                       navigateToFeatureDetails(context, features[index]),
                   child: Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(10.0),
                     child: Card(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      margin: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -132,13 +163,13 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             features[index].title,
-                            style: const TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16),
                           ),
                           Text(
                             features[index].description,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: 12, color: Colors.blueGrey),
+                            style:
+                                TextStyle(fontSize: 12, color: Colors.blueGrey),
                           ),
                         ],
                       ),
@@ -148,7 +179,7 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16),
         ],
       ),
     );

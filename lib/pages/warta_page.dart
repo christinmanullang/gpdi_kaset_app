@@ -28,22 +28,16 @@ class _WartaJemaatPageState extends State<WartaJemaatPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      appBar: AppBar(
-        title: const Text('Warta Jemaat'),
-        backgroundColor: Colors.transparent,
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'Jadwal Ibadah'),
-            Tab(text: 'Pelayan'),
-          ],
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: const [JadwalIbadahPage(), JadwalPelayanPage()],
-      ),
-    );
+        backgroundColor: Colors.grey[300],
+        appBar: AppBar(
+            title: const Text('Warta Jemaat'),
+            backgroundColor: Colors.transparent,
+            bottom: TabBar(controller: _tabController, tabs: const [
+              Tab(text: 'Jadwal Ibadah'),
+              Tab(text: 'Pelayan')
+            ])),
+        body: TabBarView(
+            controller: _tabController,
+            children: const [JadwalIbadahPage(), JadwalPelayanPage()]));
   }
 }

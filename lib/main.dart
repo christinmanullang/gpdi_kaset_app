@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gpdi_kaset_app/pages/keuangan_page.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'auth/auth_gate.dart';
 import 'firebase_options.dart';
@@ -25,13 +26,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-            textTheme: GoogleFonts.mavenProTextTheme(
+            textTheme: GoogleFonts.latoTextTheme(
           Theme.of(context).textTheme,
         )),
         routes: {
-          '/data_jemaat': (context) => const DataJemaat(),
-          '/adminhomepage': (context) => const AdminHomePage(),
-          '/jadwal_ibadah': (context) => const TambahJadwalIbadah(),
+          // '/data_jemaat': (context) => const DataJemaat(),
+          // '/adminhomepage': (context) => const AdminHomePage(),
+          // '/jadwal_ibadah': (context) => const TambahJadwalIbadah(),
         },
         debugShowCheckedModeBanner: false,
         home: const AuthGate());
