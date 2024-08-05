@@ -1,13 +1,38 @@
 # gpdi_kaset_app
 
-A new Flutter project.
+**A Flutter project: GPdI Kasih Setia App**
+<p>A final Project to fulfill college graduation requirements
+<br>Author: CHRISTIN APRILLIA BR MANULLANG
+<br>Supervisor: Citra Dewi Hasibuan S.Si., M. Sc
 
 ## Latest View
-![image](https://github.com/christinmanullang/gpdi_kaset_app/assets/77314407/4fbc592b-960f-46f1-bb62-2396cb70d9b5)
-![image](https://github.com/christinmanullang/gpdi_kaset_app/assets/77314407/0db9e558-312a-4506-baf3-e3723b76e471)
-![image](https://github.com/christinmanullang/gpdi_kaset_app/assets/77314407/db5a2d8d-1062-40b2-bd46-4caf0d3c6229)
-![image](https://github.com/christinmanullang/gpdi_kaset_app/assets/77314407/204ac0b7-88ca-47d3-8d3c-8c7910026dba)
-![image](https://github.com/christinmanullang/gpdi_kaset_app/assets/77314407/3cd7bf93-962f-4c9e-b9a5-1ba002ac6cb5)
+1. Login Page
+
+![Screenshot_20240531_094011](https://github.com/user-attachments/assets/b90a3de8-cc9e-4274-bdcd-b00bbaa0fd84)
+
+2. Home Page
+
+![Screenshot_20240805_121554](https://github.com/user-attachments/assets/09fc390e-26b6-413c-a40b-6c1c17b0dd84)
+
+3. Feature: Renungan
+
+![Screenshot_20240603_114925](https://github.com/user-attachments/assets/8da64eaa-aea2-4ca9-ba8a-caf2e3d58169)
+
+4. Feature: Keuangan
+
+![Screenshot_20240805_121545](https://github.com/user-attachments/assets/055653e8-47fb-4702-a5b3-f50014242bd4)
+
+5. Feature: Jadwal Ibadah
+
+![Screenshot_20240531_091556](https://github.com/user-attachments/assets/70509fe9-168b-422c-a8e1-0ae27884c85c)
+
+6. Feature: Jadwal Pelayan
+
+![Screenshot_20240603_115449](https://github.com/user-attachments/assets/9145404e-34e8-4794-abe5-c281637d9a8c)
+
+7. Feature: Profil Gereja
+
+![Screenshot_20240531_090740](https://github.com/user-attachments/assets/a805e218-5417-4d4c-bda7-6d5371b973a4)
 
 
 ## Getting Started
