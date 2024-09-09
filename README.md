@@ -1,9 +1,7 @@
 # gpdi_kaset_app
 
 **A Flutter project: GPdI Kasih Setia App**
-<p>A final Project to fulfill college graduation requirements
 <br>Author: CHRISTIN APRILLIA BR MANULLANG
-<br>Supervisor: Citra Dewi Hasibuan S.Si., M. Sc
 
 ## Latest View
 1. Login Page
