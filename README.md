@@ -1,7 +1,7 @@
 # gpdi_kaset_app
 
 **A Flutter project: GPdI Kasih Setia App**
-<br>Author: CHRISTIN APRILLIA BR MANULLANG
+<br>Author: Christin Aprillia 
 
 ## Latest View
 1. Login Page
